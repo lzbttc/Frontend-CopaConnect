@@ -12,14 +12,14 @@ export const styles = StyleSheet.create({
 
   texto: {
     fontFamily: 'Bostoncaps',
-    fontSize: 82,
-    color: '#D8FF1F',
-    letterSpacing: 1,
+    fontSize: 92,
+    color: '#DFFF2B',
+    letterSpacing: -2,
   },
 
   simbolo: {
-    width: 62,
-    height: 62,
+    width: 72,
+    height: 72,
     marginLeft: 6,
   },
 });

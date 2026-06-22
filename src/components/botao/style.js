@@ -7,28 +7,27 @@ export const styles = StyleSheet.create({
   },
 
   botao: {
-    width: '100%',
-    maxWidth: 350,
-
+    width: 350,
     height: 60,
-
-    backgroundColor: '#D8FF1F',
 
     justifyContent: 'center',
     alignItems: 'center',
 
-    borderRadius: 5,
+    position: 'relative',
+  },
 
-    transform: [{ skewX: '-20deg' }],
+  svg: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
   },
 
   texto: {
     fontFamily: 'Changa',
-    fontSize: 18,
-    fontWeight: '700',
+    fontSize: 20,
 
     color: '#0A1E4D',
 
-    transform: [{ skewX: '20deg' }],
+    textAlign: 'center',
   },
 });
