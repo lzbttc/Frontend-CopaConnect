@@ -14,7 +14,7 @@ export function Rotas() {
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName={NomesRotas.BOAS_VINDAS}
-        screenOptions={{ headerShown: false }}
+        screenOptions={{  headerShown: false }}
       >
         <Stack.Screen name={NomesRotas.BOAS_VINDAS} component={BoasVindas} />
         <Stack.Screen name={NomesRotas.LOGIN} component={Login} />

@@ -22,7 +22,7 @@ export function InputFormulario({
         style: StyleSheet.flatten([styles.input]),
       });
     }
-  }, []);
+  }, [senhaVisivel]);
 
   return (
     <View style={styles.container}>
