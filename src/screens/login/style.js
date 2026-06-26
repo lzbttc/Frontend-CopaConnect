@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
 
   linkContainer: {
     marginTop: 15,
-    alignItems: 'left',
+    alignItems: 'flex-start',
   },
 
   botaoContainer: {
