@@ -1,4 +1,4 @@
-import { useTeclado } from '../../hooks/use-teclado';
+import React from 'react';
 import {
   StatusBar,
   View,
@@ -17,6 +17,8 @@ import { Voltar } from '../../components/voltar';
 import { CardFormulario } from '../../components/card-formulario';
 import { InputFormulario } from '../../components/input-formulario';
 import { Botao } from '../../components/botao';
+
+import { useTeclado } from '../../hooks/use-teclado';
 
 import { styles } from './style';
 
