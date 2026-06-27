@@ -12,18 +12,19 @@ export const styles = StyleSheet.create({
 
   logoTexto: {
     fontFamily: 'Bostoncaps',
-    fontSize: 35,
+    fontSize: 30,
     color: '#DFFF2B',
   },
 
   scroll: {
     flex: 1,
-    marginTop: 30,
+    marginTop: 35,
   },
 
   scrollConteudo: {
     paddingHorizontal: 25,
     paddingBottom: 100,
+    gap: 32,
   },
 
   secao: {

@@ -4,6 +4,7 @@ import { StatusBar, View, Text, ScrollView } from 'react-native';
 import { Fundo } from '../../components/fundo';
 import { BarraNavegacao } from '../../components/barra-navegacao';
 import { CardPartidaInicio } from '../../components/card-partida-inicio';
+import { CardBoloesInicio } from '../../components/card-bolaos-inicio';
 
 import { styles } from './style';
 
@@ -16,6 +17,7 @@ const partidas = [
     minuto: 67,
     data: '2026-06-18',
     horario: '16:00',
+    estadio: 'Lusail Stadium',
     selecaoA: { nome: 'Brasil', codigo: 'BR', gols: 2 },
     selecaoB: { nome: 'Alemanha', codigo: 'DE', gols: 1 },
   },
@@ -27,6 +29,7 @@ const partidas = [
     minuto: null,
     data: '2026-06-19',
     horario: '13:00',
+    estadio: 'MetLife Stadium',
     selecaoA: { nome: 'França', codigo: 'FR', gols: null },
     selecaoB: { nome: 'Argentina', codigo: 'AR', gols: null },
   },
@@ -38,8 +41,28 @@ const partidas = [
     minuto: 90,
     data: '2026-06-17',
     horario: '10:00',
+    estadio: 'Rose Bowl',
     selecaoA: { nome: 'Espanha', codigo: 'ES', gols: 3 },
     selecaoB: { nome: 'Portugal', codigo: 'PT', gols: 2 },
+  },
+];
+
+const bolaos = [
+  {
+    id: 1,
+    nome: 'Família',
+    posicao: 1,
+    totalParticipantes: 8,
+    pontuacao: 67,
+    palpite: { golsSelecaoA: 9, golsSelecaoB: 4 },
+  },
+  {
+    id: 2,
+    nome: 'Trampo',
+    posicao: 7,
+    totalParticipantes: 12,
+    pontuacao: 30,
+    palpite: { golsSelecaoA: 5, golsSelecaoB: 2 },
   },
 ];
 
@@ -64,7 +87,7 @@ function selecionarPartidaDestaque(lista) {
   }, null);
 }
 
-export default function Inicio({ navigation }) {
+export default function Inicio() {
   const partidaDestaque = selecionarPartidaDestaque(partidas);
 
   return (
@@ -93,6 +116,17 @@ export default function Inicio({ navigation }) {
               <CardPartidaInicio
                 partida={partidaDestaque}
                 onPress={() => {}}
+              />
+            </View>
+          )}
+
+          {partidaDestaque && bolaos.length > 0 && (
+            <View style={styles.secao}>
+              <Text style={styles.tituloSecao}>Meus Bolões</Text>
+              <CardBoloesInicio
+                bolaos={bolaos}
+                partida={partidaDestaque}
+                onPressBolao={(bolao) => {}}
               />
             </View>
           )}
