@@ -5,14 +5,14 @@ import { Fundo } from '../../components/fundo';
 import { BarraNavegacao } from '../../components/barra-navegacao';
 import { CardPartidaInicio } from '../../components/card-partida-inicio';
 import { CardBoloesInicio } from '../../components/card-bolaos-inicio';
-import { CardAmigosInicio } from '../../components/card-amigos-inicio';
+import { CardAmigosOnline } from '../../components/card-amigos-online-inicio';
 import { Avatar } from '../../components/avatar';
 import { IndicadorNotificacoes } from '../../components/indicador-notificacoes';
 
 import { styles } from './style';
 import { dadosMock } from '../../utils/dados-mock';
 
-const { partidas, bolaos, amigos } = dadosMock;
+const { partidas, bolaos, amigos: amigosOnline } = dadosMock;
 
 const PRIORIDADE_STATUS = {
   AO_VIVO: 0,
@@ -27,8 +27,8 @@ const TITULO_POR_STATUS = {
 };
 
 const TITULOS_SECOES = {
-  BOLAOES: 'Meus Bolões',
-  AMIGOS: 'Amigos',
+  BOLOES: 'Meus Bolões',
+  AMIGOS: 'Amigos Online',
 };
 
 const TAMANHO_AVATAR = 32;
@@ -90,7 +90,7 @@ export default function Inicio() {
 
           {partidaDestaque && bolaos.length > 0 && (
             <View style={styles.secao}>
-              <Text style={styles.tituloSecao}>{TITULOS_SECOES.BOLAOES}</Text>
+              <Text style={styles.tituloSecao}>{TITULOS_SECOES.BOLOES}</Text>
               <CardBoloesInicio
                 bolaos={bolaos}
                 partida={partidaDestaque}
@@ -99,11 +99,11 @@ export default function Inicio() {
             </View>
           )}
 
-          {amigos.length > 0 && (
+          {amigosOnline.length > 0 && (
             <View style={styles.secao}>
               <Text style={styles.tituloSecao}>{TITULOS_SECOES.AMIGOS}</Text>
-              <CardAmigosInicio
-                amigos={amigos}
+              <CardAmigosOnline
+                amigosOnline={amigosOnline}
                 onPress={() => {}}
               />
             </View>

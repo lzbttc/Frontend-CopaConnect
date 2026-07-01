@@ -5,11 +5,11 @@ import { Avatar } from '../avatar';
 
 import { styles } from './style';
 
-const MAX_AVATARES = 4;
+const MAX_AMIGOS_ONLINE = 4;
 
-export function CardAmigosInicio({ amigos, onPress }) {
-  const amigosVisiveis = amigos.slice(0, MAX_AVATARES);
-  const restantes = amigos.length - MAX_AVATARES;
+export function CardAmigosOnline({ amigosOnline = [], onPress }) {
+  const amigosVisiveis = amigosOnline.slice(0, MAX_AMIGOS_ONLINE);
+  const restantes = amigosOnline.length - MAX_AMIGOS_ONLINE;
 
   return (
     <TouchableOpacity
@@ -21,7 +21,7 @@ export function CardAmigosInicio({ amigos, onPress }) {
         <View key={amigo.id} style={styles.amigoContainer}>
           <View>
             <Avatar tamanho={48} />
-            {amigo.online && <View style={styles.indicadorOnline} />}
+            <View style={styles.indicadorOnline} />
           </View>
           <Text style={styles.amigoNome} numberOfLines={1}>
             {amigo.nome}
@@ -29,9 +29,7 @@ export function CardAmigosInicio({ amigos, onPress }) {
         </View>
       ))}
 
-      {restantes > 0 && (
-        <Text style={styles.restantes}>+ {restantes}</Text>
-      )}
+      {restantes > 0 && <Text style={styles.restantes}>+ {restantes}</Text>}
     </TouchableOpacity>
   );
 }

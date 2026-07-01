@@ -4,6 +4,8 @@ import { Bell } from 'phosphor-react-native';
 
 import { styles } from './style';
 
+const LIMITE_BADGE = 99;
+
 export function IndicadorNotificacoes({
   quantidade = 0,
   size = 26,
@@ -11,10 +13,10 @@ export function IndicadorNotificacoes({
   onPress,
 }) {
   const quantidadeSegura = Number.isFinite(quantidade)
-    ? Math.max(0, Math.min(Number(quantidade), 99))
+    ? Math.max(0, Number(quantidade))
     : 0;
   const mostrarBadge = quantidadeSegura > 0;
-  const textoBadge = quantidadeSegura > 99 ? '99+' : String(quantidadeSegura);
+  const textoBadge = quantidadeSegura > LIMITE_BADGE ? `${LIMITE_BADGE}+` : String(quantidadeSegura);
 
   const conteudo = (
     <View style={styles.container}>
