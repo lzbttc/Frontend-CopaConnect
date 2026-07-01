@@ -14,73 +14,39 @@ import { NomesRotas } from '../../routes/nomes-rotas';
 
 import { styles } from './style';
 
+const itensNavegacao = [
+  { rota: NomesRotas.INICIO, icone: House },
+  { rota: NomesRotas.AGENDA_PARTIDAS, icone: Calendar },
+  { rota: NomesRotas.AMIGOS, icone: Users },
+  { rota: NomesRotas.BOLAO, icone: Trophy },
+  { rota: NomesRotas.ESTATISTICAS, icone: ChartBar },
+];
+
 export function BarraNavegacao() {
   const navigation = useNavigation();
   const { name: rotaAtual } = useRoute();
-
   const insets = useSafeAreaInsets();
 
   return (
     <View style={[styles.container, { paddingBottom: insets.bottom + 14 }]}>
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() => navigation.navigate(NomesRotas.INICIO)}
-        style={rotaAtual === NomesRotas.INICIO ? styles.itemAtivo : styles.item}
-      >
-        <House
-          size={26}
-          weight={rotaAtual === NomesRotas.INICIO ? 'fill' : 'regular'}
-          color="#00223A"
-        />
-      </TouchableOpacity>
+      {itensNavegacao.map(({ rota, icone: Icone }) => {
+        const ativo = rotaAtual === rota;
 
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() => {}}
-        style={rotaAtual === NomesRotas.AGENDA_PARTIDAS ? styles.itemAtivo : styles.item}
-      >
-        <Calendar
-          size={26}
-          weight={rotaAtual === NomesRotas.AGENDA_PARTIDAS ? 'fill' : 'regular'}
-          color="#00223A"
-        />
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() => {}}
-        style={rotaAtual === NomesRotas.AMIGOS ? styles.itemAtivo : styles.item}
-      >
-        <Users
-          size={26}
-          weight={rotaAtual === NomesRotas.AMIGOS ? 'fill' : 'regular'}
-          color="#00223A"
-        />
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() => {}}
-        style={rotaAtual === NomesRotas.BOLAO ? styles.itemAtivo : styles.item}
-      >
-        <Trophy
-          size={26}
-          weight={rotaAtual === NomesRotas.BOLAO ? 'fill' : 'regular'}
-          color="#00223A"
-        />
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() => {}}
-        style={rotaAtual === NomesRotas.ESTATISTICAS ? styles.itemAtivo : styles.item}
-      >
-        <ChartBar
-          size={26}
-          weight={rotaAtual === NomesRotas.ESTATISTICAS ? 'fill' : 'regular'}
-          color="#00223A"
-        />
-      </TouchableOpacity>
+        return (
+          <TouchableOpacity
+            key={rota}
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate(rota)}
+            style={ativo ? styles.itemAtivo : styles.item}
+          >
+            <Icone
+              size={26}
+              weight={ativo ? 'fill' : 'regular'}
+              color="#00223A"
+            />
+          </TouchableOpacity>
+        );
+      })}
     </View>
   );
 }
