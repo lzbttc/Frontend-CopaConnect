@@ -43,7 +43,9 @@ function InfoFase({ fase, grupo, status }) {
   );
 }
 
-function Placar({ selecaoA, selecaoB, status, minuto }) {
+function Placar({ partida }) {
+  const { selecaoA, selecaoB, status, minuto } = partida;
+
   return (
     <View style={styles.placarContainer}>
       <View style={styles.selecaoContainer}>
@@ -82,12 +84,7 @@ export function CardPartidaInicio({ partida, onPress }) {
         status={partida.status}
       />
 
-      <Placar
-        selecaoA={partida.selecaoA}
-        selecaoB={partida.selecaoB}
-        status={partida.status}
-        minuto={partida.minuto}
-      />
+      <Placar partida={partida} />
     </TouchableOpacity>
   );
 }
