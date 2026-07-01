@@ -1,6 +1,5 @@
 import React from 'react';
 import { StatusBar, View, Text, ScrollView, TouchableOpacity } from 'react-native';
-import { Bell } from 'phosphor-react-native';
 
 import { Fundo } from '../../components/fundo';
 import { BarraNavegacao } from '../../components/barra-navegacao';
@@ -8,76 +7,12 @@ import { CardPartidaInicio } from '../../components/card-partida-inicio';
 import { CardBoloesInicio } from '../../components/card-bolaos-inicio';
 import { CardAmigosInicio } from '../../components/card-amigos-inicio';
 import { Avatar } from '../../components/avatar';
+import { IndicadorNotificacoes } from '../../components/indicador-notificacoes';
 
 import { styles } from './style';
+import { dadosMock } from '../../utils/dados-mock';
 
-const partidas = [
-  {
-    id: 1,
-    status: 'AO_VIVO',
-    fase: 'Fase de Grupos',
-    grupo: 'D',
-    minuto: 67,
-    data: '2026-06-18',
-    horario: '16:00',
-    estadio: 'Lusail Stadium',
-    selecaoA: { nome: 'Brasil', codigo: 'BR', gols: 2 },
-    selecaoB: { nome: 'Alemanha', codigo: 'DE', gols: 1 },
-  },
-  {
-    id: 2,
-    status: 'AGENDADA',
-    fase: 'Fase de Grupos',
-    grupo: 'A',
-    minuto: null,
-    data: '2026-06-19',
-    horario: '13:00',
-    estadio: 'MetLife Stadium',
-    selecaoA: { nome: 'França', codigo: 'FR', gols: null },
-    selecaoB: { nome: 'Argentina', codigo: 'AR', gols: null },
-  },
-  {
-    id: 3,
-    status: 'FINALIZADA',
-    fase: 'Fase de Grupos',
-    grupo: 'B',
-    minuto: 90,
-    data: '2026-06-17',
-    horario: '10:00',
-    estadio: 'Rose Bowl',
-    selecaoA: { nome: 'Espanha', codigo: 'ES', gols: 3 },
-    selecaoB: { nome: 'Portugal', codigo: 'PT', gols: 2 },
-  },
-];
-
-const bolaos = [
-  {
-    id: 1,
-    nome: 'Família',
-    posicao: 1,
-    totalParticipantes: 8,
-    pontuacao: 67,
-    palpite: { golsSelecaoA: 9, golsSelecaoB: 4 },
-  },
-  {
-    id: 2,
-    nome: 'Trampo',
-    posicao: 7,
-    totalParticipantes: 12,
-    pontuacao: 30,
-    palpite: { golsSelecaoA: 5, golsSelecaoB: 2 },
-  },
-];
-
-const amigos = [
-  { id: 1, nome: 'Marta G.', online: true },
-  { id: 2, nome: 'Matheus N.', online: true },
-  { id: 3, nome: 'Tiago C.', online: true },
-  { id: 4, nome: 'Carla S.', online: false },
-  { id: 5, nome: 'Bruno L.', online: false },
-  { id: 6, nome: 'Fernanda R.', online: true },
-  { id: 7, nome: 'Ricardo M.', online: false },
-];
+const { partidas, bolaos, amigos } = dadosMock;
 
 const PRIORIDADE_STATUS = {
   AO_VIVO: 0,
@@ -102,6 +37,7 @@ function selecionarPartidaDestaque(lista) {
 
 export default function Inicio() {
   const partidaDestaque = selecionarPartidaDestaque(partidas);
+  const [quantidadeNotificacoes] = React.useState(3);
 
   return (
     <Fundo>
@@ -116,9 +52,10 @@ export default function Inicio() {
           <Text style={styles.logoTexto}>CopaConnect</Text>
 
           <View style={styles.headerIcones}>
-            <TouchableOpacity activeOpacity={0.8} onPress={() => {}}>
-              <Bell size={26} color="#DFFF2B" weight="regular" />
-            </TouchableOpacity>
+            <IndicadorNotificacoes
+              quantidade={quantidadeNotificacoes}
+              onPress={() => {}}
+            />
 
             <TouchableOpacity activeOpacity={0.8} onPress={() => {}}>
               <Avatar tamanho={32} />
