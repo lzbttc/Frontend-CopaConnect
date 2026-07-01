@@ -26,6 +26,14 @@ const TITULO_POR_STATUS = {
   FINALIZADA: 'Última Partida',
 };
 
+const TITULOS_SECOES = {
+  BOLAOES: 'Meus Bolões',
+  AMIGOS: 'Amigos',
+};
+
+const TAMANHO_AVATAR = 32;
+const QUANTIDADE_NOTIFICACOES_INICIAL = 3;
+
 function selecionarPartidaDestaque(lista) {
   return lista.reduce((destaque, atual) => {
     if (!destaque) return atual;
@@ -37,7 +45,7 @@ function selecionarPartidaDestaque(lista) {
 
 export default function Inicio() {
   const partidaDestaque = selecionarPartidaDestaque(partidas);
-  const [quantidadeNotificacoes] = React.useState(3);
+  const [quantidadeNotificacoes] = React.useState(QUANTIDADE_NOTIFICACOES_INICIAL);
 
   return (
     <Fundo>
@@ -58,7 +66,7 @@ export default function Inicio() {
             />
 
             <TouchableOpacity activeOpacity={0.8} onPress={() => {}}>
-              <Avatar tamanho={32} />
+              <Avatar tamanho={TAMANHO_AVATAR} />
             </TouchableOpacity>
           </View>
         </View>
@@ -82,7 +90,7 @@ export default function Inicio() {
 
           {partidaDestaque && bolaos.length > 0 && (
             <View style={styles.secao}>
-              <Text style={styles.tituloSecao}>Meus Bolões</Text>
+              <Text style={styles.tituloSecao}>{TITULOS_SECOES.BOLAOES}</Text>
               <CardBoloesInicio
                 bolaos={bolaos}
                 partida={partidaDestaque}
@@ -93,7 +101,7 @@ export default function Inicio() {
 
           {amigos.length > 0 && (
             <View style={styles.secao}>
-              <Text style={styles.tituloSecao}>Amigos</Text>
+              <Text style={styles.tituloSecao}>{TITULOS_SECOES.AMIGOS}</Text>
               <CardAmigosInicio
                 amigos={amigos}
                 onPress={() => {}}
